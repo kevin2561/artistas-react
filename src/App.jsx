@@ -9,7 +9,10 @@ function App() {
   const { theme } = useThemeStore();
   document.documentElement.classList.toggle("dark", theme === "dark");
   return (
-    <Rutas />
+    <>
+      <Rutas />
+
+    </>
   )
 }
 
