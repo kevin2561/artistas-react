@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { urlApiRest } from '../util/Urlapi';
 
 export default function Login() {
     const [usuario, setUsuario] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    // "usuario": "martinx",
+    // "password": "marcos123"
 
 
     const leerServicio = async () => {
-        const url = "http://localhost:8080/usuario/login";
+        const url =  urlApiRest +  "usuario/login";
         try {
             const response = await fetch(url, {
                 method: "POST",
@@ -24,7 +27,12 @@ export default function Login() {
             if (!response.ok) {
                 throw new Error(data);
             }
-            localStorage.setItem("token", data);
+            const token = localStorage.setItem("token", data);
+            // if (token) {
+            //     localStorage.removeItem("token")
+            //     navigate("/login");
+
+            // }
             console.log("token " + data)
             navigate("/");
             console.log("exito")

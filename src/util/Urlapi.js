@@ -1,0 +1,1 @@
+export const urlApiRest = "http://localhost:8080/";
