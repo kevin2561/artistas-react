@@ -4,6 +4,7 @@ import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Header from '../common/Header'
 import Artistas from '../pages/Artistas'
+import RutaProtegida from '../components/RutaProtegida'
 
 export default function Rutas() {
     return (
@@ -16,7 +17,10 @@ export default function Rutas() {
                     <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='/login' element={<Login />} />
-                        <Route path='/artistas' element={<Artistas />} />
+                        <Route path='/artistas' element={
+                            <RutaProtegida>
+                                <Artistas />
+                            </RutaProtegida>} />
 
                     </Routes>
                 </main>
