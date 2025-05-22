@@ -13,6 +13,10 @@ export default function Header() {
                     <Link className='text-2xl' to="/artistas">Artistas</Link>
 
                 </li>
+                <li className='list-none'>
+                    <Link className='text-2xl' to="/paginacion">Paginacion</Link>
+
+                </li>
             </nav>
 
         </header>
