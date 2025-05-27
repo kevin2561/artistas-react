@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './Paginacion.css'
 
 export default function Paginacion() {
     const [pagina, setPagina] = useState(0);
@@ -41,13 +42,22 @@ export default function Paginacion() {
         setPagina(0);
         setTotalElementos(parseInt(e.target.value));
     }
+
+    const pintarFila = (e) => {
+        e.currentTarget.classList.toggle("colorFila");
+        console.log(e.currentTarget)
+    }
+    // const removerPintarFila = (e) => {
+    //     e.currentTarget.classList.remove("colorFila");
+
+    // }
     return (
         <section className='overflow-x-auto p-4'>
             <div className='flex flex-col'>
                 <label >Mostrar datos </label>
-                <select id="" className='w-50' onChange={(e) => actualizar(e)}>
-                    <option value="" disabled selected >Seleccione un opcion</option>
-                    <option value="10" >10</option>
+                <select id="" className='w-50' onChange={actualizar} value={totalElementos}>
+                    <option value="" disabled>Seleccione un opcion</option>
+                    <option value="10">10</option>
                     <option value="30" >30</option>
                     <option value="50" >50</option>
                     <option value="100" >100</option>
@@ -67,7 +77,7 @@ export default function Paginacion() {
                 </thead>
                 <tbody className='bg-white divide-y divide-gray-200'>
                     {arryPagina.map((item, index) => (
-                        <tr key={index} className='hover:bg-indigo-50'>
+                        <tr key={index} className='hover:bg-red-600' onMouseEnter={(e) => pintarFila(e)} onMouseLeave={(e) => pintarFila(e)}>
                             <td className='px-6 py-4 font-medium text-gray-900'>{item.idCantante}</td>
                             <td className='px-6 py-4 font-medium text-gray-900'>{item.nombreReal}</td>
                             <td className='px-6 py-4 font-medium text-gray-900'>{item.nombreArtistico}</td>
