@@ -11,7 +11,7 @@ export default function Login() {
 
 
     const leerServicio = async () => {
-        const url =  urlApiRest +  "usuario/login";
+        const url = urlApiRest + "usuario/login";
         try {
             const response = await fetch(url, {
                 method: "POST",

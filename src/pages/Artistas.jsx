@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { urlApiRest } from '../util/Urlapi';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Artistas() {
     const navigate = useNavigate();
@@ -37,7 +37,7 @@ export default function Artistas() {
     return (
         <section className='@container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 p-5 transition-all duration-500'>
             {artistasList.sort((a, b) => a.nombreArtistico.localeCompare(b.nombreArtistico)).map((artista, index) =>
-                <a href="#" key={index} className="group relative block bg-black m-3">
+                <Link to="/detalle-artista" state={{artista}}  key={index} className="group relative block bg-black m-3">
                     <img
                         alt="x"
                         src="https://images.pexels.com/photos/1010519/pexels-photo-1010519.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
@@ -62,7 +62,7 @@ export default function Artistas() {
                             </div>
                         </div>
                     </div>
-                </a>
+                </Link>
             )}
 
         </section>

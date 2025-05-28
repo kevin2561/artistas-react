@@ -45,7 +45,7 @@ export default function Paginacion() {
 
     const pintarFila = (e) => {
         e.currentTarget.classList.toggle("colorFila");
-        console.log(e.currentTarget)
+        // console.log(e.currentTarget)
     }
     // const removerPintarFila = (e) => {
     //     e.currentTarget.classList.remove("colorFila");
@@ -55,7 +55,7 @@ export default function Paginacion() {
         <section className='overflow-x-auto p-4'>
             <div className='flex flex-col'>
                 <label >Mostrar datos </label>
-                <select id="" className='w-50' onChange={actualizar} value={totalElementos}>
+                <select id="" className='w-50' onChange={(e) => actualizar(e)} value={totalElementos}>
                     <option value="" disabled>Seleccione un opcion</option>
                     <option value="10">10</option>
                     <option value="30" >30</option>
@@ -92,8 +92,7 @@ export default function Paginacion() {
 
             <div className='w-full bg-amber-400 flex justify-center items-center py-2'>
                 <a onClick={(e) => retrocederPagina(e)} href="" className='mx-2 border-2 rounded px-5 text-amber-100 bg-black'>Atras</a>
-
-                <a href="" className='mx-2 border-2 rounded px-5 text-amber-100 bg-black'>{pagina + 1}</a>
+                <a onClick={(e) =>  e.preventDefault()} href="" className='mx-2 border-2 rounded px-5 text-amber-100 bg-black'>{pagina + 1}</a>
                 <a onClick={(e) => avanzarPagina(e)} href="" className='mx-2 border-2 rounded px-5 text-amber-100 bg-black'>Next</a>
 
             </div>

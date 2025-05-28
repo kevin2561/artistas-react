@@ -6,6 +6,7 @@ import Header from '../common/Header'
 import Artistas from '../pages/Artistas'
 import RutaProtegida from '../components/RutaProtegida'
 import Paginacion from '../pages/Paginacion'
+import DetalleArtista from '../pages/DetalleArtista'
 
 export default function Rutas() {
     return (
@@ -23,6 +24,7 @@ export default function Rutas() {
                                 <Artistas />
                             </RutaProtegida>} />
                         <Route path='/paginacion' element={<Paginacion />} />
+                        <Route path='/detalle-artista' element={<DetalleArtista />} />
 
                     </Routes>
                 </main>
