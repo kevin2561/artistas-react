@@ -7,6 +7,7 @@ import Artistas from '../pages/Artistas'
 import RutaProtegida from '../components/RutaProtegida'
 import Paginacion from '../pages/Paginacion'
 import DetalleArtista from '../pages/DetalleArtista'
+import Categorias from '../pages/Categorias'
 
 export default function Rutas() {
     return (
@@ -25,6 +26,7 @@ export default function Rutas() {
                             </RutaProtegida>} />
                         <Route path='/paginacion' element={<Paginacion />} />
                         <Route path='/detalle-artista' element={<DetalleArtista />} />
+                        <Route path='/cantantes' element={<Categorias />} />
 
                     </Routes>
                 </main>
