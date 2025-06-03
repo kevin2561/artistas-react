@@ -7,19 +7,18 @@ export default function Categorias() {
     const [categoria, setCategoria] = useState([]);
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState([]);
     const [cantidadC, setcantidadC] = useState();
+
+    useEffect(() => {
+        leerServicio()
+    }, [])
+
     const leerServicio = async () => {
         const url = urlApiRest + "genero/get";
         const response = await fetch(url);
         const data = await response.json();
         setCategoria(data)
-        console.log(data)
-
-
+        // console.log(data)
     }
-
-    useEffect(() => {
-        leerServicio()
-    }, [])
 
     const seleccionarElemento = (e, item) => {
         const lista = document.querySelectorAll('li');
@@ -46,7 +45,7 @@ export default function Categorias() {
                         {/* <li className="list-none border-2 p-2 `{item.idGenero === 0 ? 'active' : ''}`"  >{item.nombre}</li> */}
                         <li className='list-none border-2 p-2 ' onClick={(e) => seleccionarElemento(e, item)}>
                             {item.nombre} {item.idGenero === categoriaSeleccionada ? cantidadC : ""}
-                            <span>xd</span>
+                            {/* <span>xd</span> */}
                         </li>
                     </div>
                 )

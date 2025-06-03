@@ -20,7 +20,7 @@ export default function CardCantantes({ idCategoria, onCantidadCategorias }) {
       onCantidadCategorias(data.length)
 
     }
-    console.log(data.length)
+    // console.log(data.length)
   }
 
   // console.log(idCategoria)
