@@ -17,19 +17,27 @@ export default function Paginacion() {
         setArryPagina(data.content)
         setTotalPaginas(data.totalPages)
         setArryPaginaFiltrada(data.content)
-        // console.log(data)
+        console.log(data)
         // console.log(data.totalPages)
 
     }
     useEffect(() => {
         leerServicio();
     }, [pagina, totalElementos])
+    
+    useEffect(() => {
+        const filtrados = arryPagina.filter((cantante) =>
+            cantante.nombreReal.toLowerCase().includes(buscarCantante.toLowerCase())
+        );
+        setArryPaginaFiltrada(filtrados);
+    }, [buscarCantante, arryPagina])
 
     const avanzarPagina = (e) => {
         e.preventDefault();
         //0        //5
         if (pagina < totalPaginas - 1) {
             setPagina(pagina + 1)
+            // setBuscarCantante("")
 
         }
     }
@@ -38,6 +46,7 @@ export default function Paginacion() {
         //5        //0
         if (pagina > 0) {
             setPagina(pagina - 1)
+            // setBuscarCantante("")
 
         }
     }
@@ -51,16 +60,16 @@ export default function Paginacion() {
         e.currentTarget.classList.toggle("colorFila");
         // console.log(e.currentTarget)
     }
-    const filtrarCantantes = (e) => {
-        const valor = e.target.value
-        setBuscarCantante(valor)
-        const textFiltro = arryPagina.filter((canante) => canante.nombreReal.toLowerCase().includes(valor.toLowerCase()))
-        setArryPaginaFiltrada(textFiltro)
-        console.log(valor)
-        // setPagina(0);
-        // setBuscarCantante(e.target.value);
+    // const filtrarCantantes = (e) => {
+    //     const valor = e.target.value
+    //     setBuscarCantante(valor)
+    //     const textFiltro = arryPagina.filter((canante) => canante.nombreReal.toLowerCase().includes(valor.toLowerCase()))
+    //     setArryPaginaFiltrada(textFiltro)
+    //     console.log(valor)
+    //     // setPagina(0);
+    //     // setBuscarCantante(e.target.value);
 
-    }
+    // }
 
 
     // const removerPintarFila = (e) => {
@@ -82,10 +91,10 @@ export default function Paginacion() {
                 </div>
                 <div className='flex gap-5'>
                     <label htmlFor="">Buscardor</label>
-                    <input onChange={(e) => filtrarCantantes(e)} value={buscarCantante} type="text" className='border-2 w-150' />
+                    <input onChange={(e) => setBuscarCantante(e.target.value)} value={buscarCantante} type="text" className='border-2 w-150' />
                 </div>
             </section>
-            <table className='min-w-full text-sm text-left text-gray-500 border border-gray-200 rounded-lg overflow-hidden shadow-lg'>
+            <table className='min-w-full min-h-50 text-sm text-left text-gray-500 border border-gray-200 rounded-lg overflow-hidden shadow-lg'>
                 <thead className='text-xs text-white uppercase bg-indigo-600'>
                     <tr>
                         <th scope="col" className='border-2 p-1'>Codigo</th>
@@ -98,21 +107,22 @@ export default function Paginacion() {
                     </tr>
                 </thead>
                 <tbody className='bg-white divide-y divide-gray-200'>
-                    {arryPaginaFiltrada.map((item, index) => (
-                        <tr key={index} className='hover:bg-red-600' onMouseEnter={(e) => pintarFila(e)} onMouseLeave={(e) => pintarFila(e)}>
-                            <td className='px-6 py-4 font-medium text-gray-900'>{item.idCantante}</td>
-                            <td className='px-6 py-4 font-medium text-gray-900'>{item.nombreReal}</td>
-                            <td className='px-6 py-4 font-medium text-gray-900'>{item.nombreArtistico}</td>
-                            <td className='px-6 py-4 font-medium text-gray-900'>{item.fechaNacimiento}</td>
-                            <td className='px-6 py-4 font-medium text-gray-900'>{item.paisOrigen}</td>
-                            <td className='px-6 py-4 font-medium text-gray-900'>{item.generoMusical}</td>
-                            <td className='px-6 py-4 font-medium text-gray-900'>{item.edad}</td>
-                        </tr>
-                    ))}
+                    {arryPaginaFiltrada.length === 0 ? <tr className='text-center'><td>XD</td></tr>
+                        : arryPaginaFiltrada.map((item, index) => (
+                            <tr key={index} className='hover:bg-red-600' onMouseEnter={(e) => pintarFila(e)} onMouseLeave={(e) => pintarFila(e)}>
+                                <td className='px-6 py-4 font-medium text-gray-900'>{item.idCantante}</td>
+                                <td className='px-6 py-4 font-medium text-gray-900'>{item.nombreReal}</td>
+                                <td className='px-6 py-4 font-medium text-gray-900'>{item.nombreArtistico}</td>
+                                <td className='px-6 py-4 font-medium text-gray-900'>{item.fechaNacimiento.split("-").reverse().join("/")}</td>
+                                <td className='px-6 py-4 font-medium text-gray-900'>{item.paisOrigen}</td>
+                                <td className='px-6 py-4 font-medium text-gray-900'>{item.generoMusical}</td>
+                                <td className='px-6 py-4 font-medium text-gray-900'>{item.edad}</td>
+                            </tr>
+                        ))}
                 </tbody>
             </table>
 
-            <div className='w-full bg-amber-400 flex justify-center items-center py-2'>
+            <div id='conten-paginacion' className='w-full bg-amber-400 flex justify-center items-center py-2'>
                 <a onClick={(e) => retrocederPagina(e)} href="" className='mx-2 border-2 rounded px-5 text-amber-100 bg-black'>Atras</a>
                 <a onClick={(e) => e.preventDefault()} href="" className='mx-2 border-2 rounded px-5 text-amber-100 bg-black'>{pagina + 1}</a>
                 <a onClick={(e) => avanzarPagina(e)} href="" className='mx-2 border-2 rounded px-5 text-amber-100 bg-black'>Next</a>
