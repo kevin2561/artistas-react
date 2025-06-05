@@ -13,14 +13,23 @@ export default function Header() {
                     <Link className='text-2xl' to="/artistas">Artistas</Link>
 
                 </li>
+
                 <li className='list-none'>
                     <Link className='text-2xl' to="/paginacion">Paginacion</Link>
 
                 </li>
-                      <li className='list-none'>
+
+                <li className='list-none'>
                     <Link className='text-2xl' to="/cantantes">Cantantes</Link>
 
                 </li>
+
+                <li className='list-none'>
+                    <Link className='text-2xl' to="/login-firebase">Login Firebase</Link>
+
+                </li>
+
+
             </nav>
 
         </header>
