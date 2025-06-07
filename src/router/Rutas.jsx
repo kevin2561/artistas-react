@@ -9,6 +9,7 @@ import Paginacion from '../pages/Paginacion'
 import DetalleArtista from '../pages/DetalleArtista'
 import Categorias from '../pages/Categorias'
 import LoginFirebase from '../pages/LoginFirebase'
+import Grafico from '../pages/Grafico'
 
 export default function Rutas() {
     return (
@@ -29,6 +30,8 @@ export default function Rutas() {
                         <Route path='/detalle-artista' element={<DetalleArtista />} />
                         <Route path='/cantantes' element={<Categorias />} />
                         <Route path='/login-firebase' element={<LoginFirebase />} />
+                        <Route path='/graficos' element={<Grafico />} />
+
 
                     </Routes>
                 </main>

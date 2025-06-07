@@ -29,6 +29,11 @@ export default function Header() {
 
                 </li>
 
+                <li className='list-none'>
+                    <Link className='text-2xl' to="/graficos">Graficos</Link>
+
+                </li>
+
 
             </nav>
 

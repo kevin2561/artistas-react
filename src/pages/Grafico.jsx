@@ -1,6 +1,8 @@
 import React from 'react'
-import { Bar } from 'react-chartjs-2'
-import { Chart as ChartJS, CategoryScale,  } from 'chart.js'
+import { Bar, Pie } from 'react-chartjs-2'
+import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.register(ArcElement, Tooltip, Legend)
 export default function Grafico() {
 
     const data = {
@@ -8,7 +10,7 @@ export default function Grafico() {
         datasets: [
             {
                 label: 'Ventas',
-                data: [300, 500, 200],
+                data: [300, 500, 200, 500, 600, 800, 900, 1000],
                 backgroundColor: 'rgba(75, 192, 192, 0.6)',
             }
         ]
@@ -23,6 +25,19 @@ export default function Grafico() {
 
 
     return (
-        <div>Grafico</div>
+        <>
+
+            {/* grafico barra */}
+
+            <div className='w-screen h-250'>
+                <Bar data={data} options={options} />
+
+            </div>
+            {/* grafico circular */}
+            <div className='w-screen h-250'>
+                <Pie data={data} options={options} />
+            </div>
+
+        </>
     )
 }
