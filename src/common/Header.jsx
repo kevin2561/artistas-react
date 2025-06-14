@@ -33,6 +33,10 @@ export default function Header() {
                     <Link className='text-2xl' to="/graficos">Graficos</Link>
 
                 </li>
+                  <li className='list-none'>
+                    <Link className='text-2xl' to="/chapGPT">ChatAi</Link>
+
+                </li>
 
 
             </nav>
